@@ -5,7 +5,9 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : 2.7.2
+
+* Rails version : 5.6.3
 
 * System dependencies
 
@@ -15,7 +17,7 @@ Things you may want to cover:
 
 * Database initialization
 
-* How to run the test suite
+* How to run the test suite : Open blogApp folder and run " rails s" on terminal
 
 * Services (job queues, cache servers, search engines, etc.)
 
