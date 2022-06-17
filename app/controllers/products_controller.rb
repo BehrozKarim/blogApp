@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+#   after_action flash[:success] = 'Successful', only: %i[show edit update destroy]
+
   def new
     @product = Product.new
   end
@@ -27,16 +29,18 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
   end
 
   def index
-    # @product = Product.order('created_at_ASC')
+    # @product = Product.order('created_at ASC')
     @product = current_user.products.order('created_at DESC')
   end
 
   def edit
     @product = Product.find(params[:id])
+    # @product = current_user.products.find(params[:id])
   end
 
   def update
@@ -46,7 +50,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
+    @product = current_user.products.find(params[:id])
     @product.destroy
     redirect_to products_path
   end

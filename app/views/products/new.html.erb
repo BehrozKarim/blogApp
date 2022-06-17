@@ -4,8 +4,8 @@
       <p><%= msg %></p>
     <% end %>
     Name: <%= f.text_field :name %> <br />
-    Quantity: <%= f.text_field :quantity %> <br />
-    Price: <%= f.text_field :price %> <br />
+    Quantity: <%= f.number_field :quantity %> <br />
+    Price: <%= f.number_field :price, step: :any %> <br />
     <%= f.submit%>
 
   
