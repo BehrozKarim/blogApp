@@ -1,5 +1,8 @@
-<%# New Product %>
+
 <%= form_for(@product)  do |f| %>
+    <% @product.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
     Name: <%= f.text_field :name %> <br />
     Quantity: <%= f.text_field :quantity %> <br />
     Price: <%= f.text_field :price %> <br />
