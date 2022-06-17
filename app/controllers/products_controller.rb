@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-#   after_action flash[:success] = 'Successful', only: %i[show edit update destroy]
+  after_action :output_on_screen, only: %i[show update destroy]
+  before_action :p_id_action, only: %i[show update destroy]
 
   def new
     @product = Product.new
@@ -30,7 +31,7 @@ class ProductsController < ApplicationController
 
   def show
     # @product = Product.find(params[:id])
-    @product = current_user.products.find(params[:id])
+    # @product = current_user.products.find(params[:id])
   end
 
   def index
@@ -44,14 +45,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = current_user.products.find(params[:id])
+    # @product = current_user.products.find(params[:id])
     @product.update(product_params)
     redirect_to product_path(@product)
   end
 
   def destroy
     # @product = Product.find(params[:id])
-    @product = current_user.products.find(params[:id])
+    # @product = current_user.products.find(params[:id])
     @product.destroy
     redirect_to products_path
   end
@@ -60,5 +61,13 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :quantity, :price)
+  end
+
+  def output_on_screen
+    flash[:success] = 'Successful'
+  end
+
+  def p_id_action
+    @product = current_user.products.find(params[:id])
   end
 end
