@@ -31,7 +31,8 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @product = current_user.products
+    # @product = Product.order('created_at_ASC')
+    @product = current_user.products.order('created_at DESC')
   end
 
   def edit
