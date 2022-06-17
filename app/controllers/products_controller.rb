@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  after_action :output_on_screen, only: %i[show update destroy]
-  before_action :p_id_action, only: %i[show update destroy]
+# after_action :output_on_screen, only: %i[show update destroy]
+  before_action :find_product_action, only: %i[show update destroy]
 
   def new
     @product = Product.new
@@ -63,11 +63,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :quantity, :price)
   end
 
-  def output_on_screen
-    flash[:success] = 'Successful'
-  end
+#   def output_on_screen
+#     flash[:success] = 'Successful'
+#   end
 
-  def p_id_action
+  def find_product_action
     @product = current_user.products.find(params[:id])
   end
 end
